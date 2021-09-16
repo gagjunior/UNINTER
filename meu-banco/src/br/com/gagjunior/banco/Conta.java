@@ -24,6 +24,15 @@ public class Conta {
 			return true;
 		}		
 	}
+	
+	boolean transferir(Conta conta, float valor) {
+		if (sacar(valor)) {
+			conta.saldo += valor;
+			return true;
+		} else {
+			return false;
+		}		
+	}
 
 	@Override
 	public String toString() {
@@ -31,7 +40,6 @@ public class Conta {
 				+ ", saldo=" + saldo + ", limiteSaque="
 				+ limiteSaque + "]";
 	}
-	
 	
 
 }
