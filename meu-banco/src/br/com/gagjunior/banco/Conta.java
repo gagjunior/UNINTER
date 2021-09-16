@@ -5,7 +5,15 @@ public class Conta {
 	int numero;
 	String nomeTitular;
 	float saldo;
-	float limiteSaque;
+	float limiteSaque = 1000.00f;
+	
+	Conta() {};
+	
+	Conta(int numero, String nomeTitular, float saldo) {
+		this.numero = numero;
+		this.nomeTitular = nomeTitular;
+		this.saldo = saldo;
+	}
 	
 	boolean sacar(float valor) {		
 		if(valor > saldo || valor > limiteSaque || valor <= 0) {
