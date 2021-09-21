@@ -1,7 +1,5 @@
 package br.com.gagjunior.jv;
 
-public class Computador {
-	
-	
-
+public enum ModoJogo {
+	A, B, C
 }
