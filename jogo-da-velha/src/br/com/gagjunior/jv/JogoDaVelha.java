@@ -11,7 +11,7 @@ public class JogoDaVelha {
 		exibirTitulo();
 		
 		String nomeJogador;
-		String modoJogo;
+		int modoJogo;
 		
 		
 		Scanner teclado = new Scanner(System.in);
@@ -21,12 +21,15 @@ public class JogoDaVelha {
 		
 		System.out.println("\n" + nomeJogador + ", Seja bem vindo ao jogo da velha!!\n");
 		
-		System.out.println("Digite um numero entre 1 e 3 para escolher o modo de jogo...");
+		System.out.println("***Modos de Jogo***");
 		System.out.println("1 - Modo A");
 		System.out.println("2 - Modo B");
-		System.out.println("1 - Modo C");
+		System.out.println("3 - Modo C");
+		System.out.print("\nDigite o numero do mode que deseja jogar: \n");
 		
-		modoJogo = teclado.nextLine();
+		modoJogo = teclado.nextInt();
+		
+		System.out.println("O modo escolhido foi: " + Integer.toString(modoJogo));
 		
 		teclado.close();
 		
