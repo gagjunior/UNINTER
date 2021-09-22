@@ -28,8 +28,15 @@ public class JogoDaVelha {
 		System.out.print("\nDigite o numero do mode que deseja jogar: \n");
 		
 		modoJogo = teclado.nextInt();
+
+		if (modoJogo == 1) {
+			System.out.println("Você escolheu o modo 'A'");
+		} else if (modoJogo == 2) {
+			System.out.println("Voce escolheu o modo 'B'");			
+		} else {
+			System.out.println("Você escolheu o modo 'C'");
+		}
 		
-		System.out.println("O modo escolhido foi: " + Integer.toString(modoJogo));
 		
 		teclado.close();
 		
