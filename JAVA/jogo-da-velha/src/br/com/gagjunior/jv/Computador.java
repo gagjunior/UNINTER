@@ -1,6 +1,6 @@
 package br.com.gagjunior.jv;
 
-public class Computador {
+public abstract class Computador {
 	
 	
 

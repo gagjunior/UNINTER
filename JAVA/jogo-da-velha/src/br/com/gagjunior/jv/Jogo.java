@@ -3,7 +3,7 @@ package br.com.gagjunior.jv;
 import java.util.Scanner;
 
 //Classe principal
-public class JogoDaVelha {
+public class Jogo {
 
 	public static void main(String[] args) {
 		
@@ -12,7 +12,7 @@ public class JogoDaVelha {
 		
 		String nomeJogador;
 		int modoJogo;
-		
+		Computador computador;
 		
 		Scanner teclado = new Scanner(System.in);
 		
@@ -31,16 +31,17 @@ public class JogoDaVelha {
 
 		if (modoJogo == 1) {
 			System.out.println("Você escolheu o modo 'A'");
+			computador = new ModoA();
 		} else if (modoJogo == 2) {
-			System.out.println("Voce escolheu o modo 'B'");			
+			System.out.println("Voce escolheu o modo 'B'");
+			computador = new ModoB();
 		} else {
 			System.out.println("Você escolheu o modo 'C'");
-		}
-		
+			computador = new ModoC();
+		}		
 		
 		teclado.close();
 		
-
 	}
 	
 	// Exibir titulo do jogo
