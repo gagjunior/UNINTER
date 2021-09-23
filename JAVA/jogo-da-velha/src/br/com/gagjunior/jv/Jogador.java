@@ -1,36 +1,35 @@
 package br.com.gagjunior.jv;
 
-public class Jogador {
+public abstract class Jogador {
 	
-	private String nome;
-	private int linha;
-	private int coluna;
+	private char simbolo;
 	
-	public Jogador(String nome) {
-		this.nome = nome;
+	Jogador (char simbolo) {
+		this.simbolo = simbolo;		
 	}
 	
-	public String getNome() {
-		return nome;
+	public char getSimbolo() {
+		return simbolo;
 	}
 	
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setSimbolo(char simbolo) {
+		this.simbolo = simbolo;		
 	}
 	
-	public int getLinha() {
-		return linha;
+	boolean jogar(int linha, int coluna, Tabuleiro tab) {
+		if (!campoEhLivre(linha, coluna, tab)) {
+			return false;			
+		}
+		
+		tab.campo[linha][coluna] = simbolo;
+		return true;
 	}
 	
-	public void setLinha(int linha) {
-		this.linha = linha;
-	}
-	
-	public int getColuna() {
-		return coluna;
-	}
-	
-	public void setColuna(int coluna) {
-		this.coluna = coluna;
-	}
+	boolean campoEhLivre(int linha, int coluna, Tabuleiro tab) {
+		if (tab.campo[linha][coluna] == '-') {
+			return true;
+		}
+		return false;			
+	}	
+
 }
