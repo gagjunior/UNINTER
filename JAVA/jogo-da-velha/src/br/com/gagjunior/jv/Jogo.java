@@ -7,14 +7,17 @@ public class Jogo {
 
 	public static void main(String[] args) {
 		
-		//Titulo do jogo
-		exibirTitulo();
-		
 		String nomeJogador;
 		int modoJogo;
 		int opcaoSimbolo;
 		char simbolo;
 		Computador computador;
+		Tabuleiro tab = new Tabuleiro();
+		
+		//Titulo do jogo
+		exibirTitulo();
+		tab.imprimir();
+		
 		
 		Scanner teclado = new Scanner(System.in);
 		
@@ -44,7 +47,7 @@ public class Jogo {
 		System.out.println("1 - Modo A");
 		System.out.println("2 - Modo B");
 		System.out.println("3 - Modo C");
-		System.out.print("Digite o numero do mode que deseja jogar: ");
+		System.out.print("Digite o numero do modo que deseja jogar: ");
 		
 		modoJogo = teclado.nextInt();
 		teclado.nextLine();
