@@ -16,7 +16,7 @@ public class Jogo {
 		
 		//Titulo do jogo
 		exibirTitulo();
-		tab.imprimir();
+		tab.imprimirPosicoes();
 		
 		
 		Scanner teclado = new Scanner(System.in);

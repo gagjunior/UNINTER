@@ -1,27 +1,27 @@
 package br.com.gagjunior.jv;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tabuleiro {
 	
-	char campo[][] = new char[3][3];
+	private int tamanhoCampo = 9;	
+	List<String> campo = new ArrayList<>(tamanhoCampo);
 	
 	Tabuleiro() {
-		
-		for (int i = 0; i < campo.length; i++) {
-			for (int j = 0; j < campo.length; j++) {
-				campo[i][j] = '-';								
-			}			
-		}
+		for (int i=0; i < tamanhoCampo; i++) {
+			campo.add("-");
+		}				
 	}
 	
-	void imprimir() {
+	void imprimirPosicoes() {
 		System.out.println("**** TABULEIRO ****");
-		for (int i = 0; i < campo.length; i++) {
-			for (int j = 0; j < campo.length; j++) {
-				campo[i][j] = '-';
-				System.out.print("L" + (i + 1) + "C" + (j + 1) + " ");
+		for (int i=0; i < tamanhoCampo; i++) {			
+			System.out.print(" " + (i + 1) + " ");			
+			if (i == 2 || i == 5) {
+				System.out.println();				
 			}
-			System.out.println("\n");
-		}
-		
+		}		
+		System.out.println();
 	}
 }
