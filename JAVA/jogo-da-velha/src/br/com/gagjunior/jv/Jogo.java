@@ -47,23 +47,6 @@ public class Jogo {
 		teclado.nextLine();		
 		
 		
-		// TROCAR POR OPERADOR TERNARIO
-		/* 
-		if (opcaoSimbolo == 1 && modoJogo == 1) {
-			System.out.println("Você vai jogar com o simbolo: 'X'");
-			simbolo = "X".toUpperCase();
-			Jogador j1 = new Humano("X");
-			Computador comp = new ModoA("O");
-		} else if (opcaoSimbolo == 1 && modoJogo == 2) {
-			System.out.println("Você vai jogar com o simbolo: 'X'");
-			simbolo = "X".toUpperCase();
-			Jogador j1 = new Humano("X");
-			Computador comp = new ModoA("O");
-		}
-		*/
-		
-				
-		
 		teclado.close();
 		
 	}
