@@ -10,7 +10,8 @@ public class Jogo {
 		String nomeJogador;
 		int modoJogo;
 		int opcaoSimbolo;
-		String simbolo;
+		String simboloHum;
+		String simboloComp;
 		Tabuleiro tab = new Tabuleiro();
 		
 		//Titulo do jogo
@@ -30,6 +31,11 @@ public class Jogo {
 		
 		opcaoSimbolo = teclado.nextInt();
 		teclado.nextLine();
+		
+		simboloHum = opcaoSimbolo == 1 ? "X" : "O";
+		simboloComp = simboloHum.equals("X") ? "O" : "X";
+		
+		System.out.println("Você vai jogar com o simbolo: " + simboloHum);
 		
 		System.out.println("***Modos de Jogo***");
 		System.out.println("1 - Modo A");
