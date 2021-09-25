@@ -24,7 +24,7 @@ public class Jogo {
 		
 		System.out.println(nomeJogador + ", Seja bem vindo ao jogo da velha!!\n");
 		
-		System.out.println("Escolha com qual simbolo voc� quer jogar...");
+		System.out.println("Escolha com qual simbolo você quer jogar...");
 		System.out.println("1 - X");
 		System.out.println("2 - O");
 		System.out.print("Digite o numero do simbolo: \n");
@@ -35,7 +35,7 @@ public class Jogo {
 		simboloHum = opcaoSimbolo == 1 ? "X" : "O";
 		simboloComp = simboloHum.equals("X") ? "O" : "X";
 		
-		System.out.println("Você vai jogar com o simbolo: " + simboloHum);
+		System.out.println("Você vai jogar com o simbolo: " + simboloHum + "\n");
 		
 		System.out.println("***Modos de Jogo***");
 		System.out.println("1 - Modo A");
