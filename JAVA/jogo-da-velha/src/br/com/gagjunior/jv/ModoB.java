@@ -2,9 +2,8 @@ package br.com.gagjunior.jv;
 
 public class ModoB extends Computador {
 
-	ModoB(char simbolo) {
+	ModoB(String simbolo) {
 		super(simbolo);
-		// TODO Auto-generated constructor stub
 	}
 
 }

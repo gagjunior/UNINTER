@@ -10,14 +10,11 @@ public class Jogo {
 		String nomeJogador;
 		int modoJogo;
 		int opcaoSimbolo;
-		char simbolo;
-		Computador computador;
+		String simbolo;
 		Tabuleiro tab = new Tabuleiro();
 		
 		//Titulo do jogo
-		exibirTitulo();
-		tab.imprimirPosicoes();
-		
+		exibirTitulo();		
 		
 		Scanner teclado = new Scanner(System.in);
 		
@@ -26,22 +23,13 @@ public class Jogo {
 		
 		System.out.println(nomeJogador + ", Seja bem vindo ao jogo da velha!!\n");
 		
-		System.out.println("Escolha com qual simbolo você quer jogar...");
+		System.out.println("Escolha com qual simbolo vocï¿½ quer jogar...");
 		System.out.println("1 - X");
 		System.out.println("2 - O");
 		System.out.print("Digite o numero do simbolo: \n");
 		
 		opcaoSimbolo = teclado.nextInt();
 		teclado.nextLine();
-		
-		if (opcaoSimbolo == 1) {
-			System.out.println("Você vai jogar com 'X'");
-			simbolo = Character.toUpperCase('X');
-		} else {
-			System.out.println("Você vai jogar com 'O'");
-			simbolo = Character.toUpperCase('O');
-		}
-		
 		
 		System.out.println("***Modos de Jogo***");
 		System.out.println("1 - Modo A");
@@ -50,19 +38,25 @@ public class Jogo {
 		System.out.print("Digite o numero do modo que deseja jogar: ");
 		
 		modoJogo = teclado.nextInt();
-		teclado.nextLine();
-
-		if (modoJogo == 1) {
-			System.out.println("Você escolheu o modo 'A'\n");
-			computador = new ModoA(simbolo);
-		} else if (modoJogo == 2) {
-			System.out.println("Você escolheu o modo 'B'\n");
-			computador = new ModoB(simbolo);
-		} else {
-			System.out.println("Você escolheu o modo 'C'\n");
-			computador = new ModoC(simbolo);
-		}
+		teclado.nextLine();		
 		
+		
+		// TROCAR POR OPERADOR TERNARIO
+		/* 
+		if (opcaoSimbolo == 1 && modoJogo == 1) {
+			System.out.println("VocÃª vai jogar com o simbolo: 'X'");
+			simbolo = "X".toUpperCase();
+			Jogador j1 = new Humano("X");
+			Computador comp = new ModoA("O");
+		} else if (opcaoSimbolo == 1 && modoJogo == 2) {
+			System.out.println("VocÃª vai jogar com o simbolo: 'X'");
+			simbolo = "X".toUpperCase();
+			Jogador j1 = new Humano("X");
+			Computador comp = new ModoA("O");
+		}
+		*/
+		
+				
 		
 		teclado.close();
 		

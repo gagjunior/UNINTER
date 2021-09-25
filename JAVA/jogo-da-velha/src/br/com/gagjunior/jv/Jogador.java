@@ -2,24 +2,25 @@ package br.com.gagjunior.jv;
 
 public abstract class Jogador {
 	
-	private char simbolo;
+	private String simbolo;
 	private int vitorias;
 	
-	Jogador (char simbolo) {
+	Jogador (String simbolo) {
 		this.simbolo = simbolo;		
 	}	
 	
 	
-	boolean jogar(Tabuleiro tab) {
+	boolean jogar(Tabuleiro tab, int posicao) {
+		tab.campo.add(posicao - 1, simbolo);
 		return true;
 	}
 	
 	
-	public char getSimbolo() {
+	public String getSimbolo() {
 		return simbolo;
 	}
 	
-	public void setSimbolo(char simbolo) {
+	public void setSimbolo(String simbolo) {
 		this.simbolo = simbolo;		
 	}
 
