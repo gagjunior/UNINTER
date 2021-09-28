@@ -7,18 +7,8 @@ public abstract class Jogador {
 	
 	Jogador (String simbolo) {
 		this.simbolo = simbolo;		
-	}	
-	
-	
-	boolean jogar(Tabuleiro tab, int posicao) {
-		int pos = posicao - 1;
-		if (!posicaoEhLivre(tab, pos)) {
-			System.out.println("Posição " + posicao +  " não está livre");
-			return false;
-		}
-		tab.campo.add(pos, simbolo);
-		return true;			
 	}
+	
 	
 	boolean posicaoEhLivre(Tabuleiro tab, int posicao) {
 		int pos = posicao - 1;
@@ -43,7 +33,7 @@ public abstract class Jogador {
 
 	public void setVitorias(int vitorias) {
 		this.vitorias = vitorias;
-	}
+	}	
 	
 
 }

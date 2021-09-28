@@ -42,6 +42,7 @@ public class Jogo {
 		Jogador humano = new Humano(simboloHum, nomeJogador);
 		Computador maquina = setModoJogo(modoJogo, comp, simboloComp, teclado);
 		
+		
 		teclado.close();
 		
 	}
