@@ -23,9 +23,10 @@ public class Jogo {
 		System.out.print("Digite seu nome: ");
 		nomeJogador = teclado.nextLine();
 		
+		
 		System.out.println(nomeJogador + ", Seja bem vindo ao jogo da velha!!\n");
 		
-		System.out.println("Escolha com qual simbolo você quer jogar...");
+		System.out.println("Escolha com qual simbolo vocÃª quer jogar...");
 		System.out.println("1 - X");
 		System.out.println("2 - O");
 		System.out.print("Digite o numero do simbolo: \n");
@@ -36,12 +37,10 @@ public class Jogo {
 		simboloHum = opcaoSimbolo == 1 ? "X" : "O";
 		simboloComp = simboloHum.equals("X") ? "O" : "X";
 		
-		System.out.println("Você vai jogar com o simbolo: " + simboloHum + "\n");
+		System.out.println("VocÃª vai jogar com o simbolo: " + simboloHum + "\n");
 		
-		
-		
+		Jogador humano = new Humano(simboloHum, nomeJogador);
 		Computador maquina = setModoJogo(modoJogo, comp, simboloComp, teclado);
-		
 		
 		teclado.close();
 		
@@ -68,13 +67,13 @@ public class Jogo {
 		
 		if (modo == 1) {
 			comp = new ModoA(simbolo);
-			System.out.println("Você vai jogar no modo 'A'");
+			System.out.println("VocÃª vai jogar no modo 'A'");
 		} else if (modo == 2) {
 			comp = new ModoB(simbolo);			
-			System.out.println("Você vai jogar no modo 'B'");
+			System.out.println("VocÃª vai jogar no modo 'B'");
 		} else {
 			comp = new ModoC(simbolo);
-			System.out.println("Você vai jogar no modo 'C'");
+			System.out.println("VocÃª vai jogar no modo 'C'");
 		}
 		return comp;
 	}

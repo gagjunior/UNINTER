@@ -11,7 +11,20 @@ public abstract class Jogador {
 	
 	
 	boolean jogar(Tabuleiro tab, int posicao) {
-		tab.campo.add(posicao - 1, simbolo);
+		int pos = posicao - 1;
+		if (!posicaoEhLivre(tab, pos)) {
+			System.out.println("Posição " + posicao +  " não está livre");
+			return false;
+		}
+		tab.campo.add(pos, simbolo);
+		return true;			
+	}
+	
+	boolean posicaoEhLivre(Tabuleiro tab, int posicao) {
+		int pos = posicao - 1;
+		if (!tab.campo.get(pos).equals("-")) {
+			return false;			
+		}
 		return true;
 	}
 	
