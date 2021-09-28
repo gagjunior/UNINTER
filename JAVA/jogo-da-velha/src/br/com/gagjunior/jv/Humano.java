@@ -14,7 +14,7 @@ public class Humano extends Jogador {
 		
 	}
 
-	
+
 	boolean jogar(Tabuleiro tab, Scanner teclado) {
 		System.out.print("Digite o numero da posição que deseja jogar: ");
 		
@@ -37,7 +37,6 @@ public class Humano extends Jogador {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	
+	}	
 	
 }

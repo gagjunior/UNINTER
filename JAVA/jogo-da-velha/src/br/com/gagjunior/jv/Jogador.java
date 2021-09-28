@@ -9,7 +9,6 @@ public abstract class Jogador {
 		this.simbolo = simbolo;		
 	}
 	
-	
 	boolean posicaoEhLivre(Tabuleiro tab, int posicao) {
 		int pos = posicao - 1;
 		if (!tab.campo.get(pos).equals("-")) {
