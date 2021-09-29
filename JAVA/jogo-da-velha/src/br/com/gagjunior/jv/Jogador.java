@@ -4,19 +4,22 @@ public abstract class Jogador {
 	
 	private String simbolo;
 	private int vitorias;
+	Tabuleiro tab;
 	
-	Jogador (String simbolo) {
-		this.simbolo = simbolo;		
+	Jogador (String simbolo, Tabuleiro tab) {
+		this.simbolo = simbolo;
+		this.tab = tab;
 	}
 	
-	boolean posicaoEhLivre(Tabuleiro tab, int posicao) {
-		int pos = posicao - 1;
-		if (!tab.campo.get(pos).equals("-")) {
+	abstract boolean jogar();
+	
+	boolean posicaoEhLivre(int indice) {
+		if (!tab.campo.get(indice).equals("-")) {
 			return false;			
 		}
 		return true;
 	}
-	
+		
 	
 	public String getSimbolo() {
 		return simbolo;
