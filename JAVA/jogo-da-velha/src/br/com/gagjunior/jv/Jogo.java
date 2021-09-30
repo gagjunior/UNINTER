@@ -10,6 +10,7 @@ public class Jogo {
 		String nomeJogador;
 		int modoJogo = 0;
 		int opcaoSimbolo = 0;
+		char inicio;
 		String simboloHum;
 		String simboloComp;
 		Tabuleiro tab = new Tabuleiro();
@@ -28,7 +29,8 @@ public class Jogo {
 		System.out.println("*** Simbolos ***");
 		System.out.println("1 - X");
 		System.out.println("2 - O");
-		System.out.print("Escolha com qual simbolo vocÃª quer jogar. Digite o numero 1 ou 2: ");
+		System.out.println("Escolha com qual simbolo você quer jogar.");
+		System.out.print("Digite o numero 1 ou 2: ");
 		
 		opcaoSimbolo = teclado.nextInt();
 		teclado.nextLine();
@@ -40,13 +42,32 @@ public class Jogo {
 		
 		Humano humano = new Humano(simboloHum, tab, nomeJogador);
 		
-		System.out.println(humano.getNome() + ",  ");
+		System.out.println(humano.getNome() + ",  bem vindo ao Jogo da Velha");
+		System.out.println("Você vai jogar com o simbolo: " + humano.getSimbolo());
+		
+		System.out.println();
 	
 		Computador maquina = setModoJogo(modoJogo, comp, simboloComp, teclado, tab);
 		
-		tab.imprimirPosicoes();
-		tab.imprimirTabuleiro();
+		System.out.println();
+		
+		System.out.println("Deseja iniciar a partida?");
+		System.out.print("Digite S - sim / N - não: ");
 				
+		inicio = teclado.nextLine().toUpperCase().charAt(0);
+		
+		while (inicio == 'S') {
+			tab.imprimirPosicoes();
+			
+			System.out.println();
+			
+			inicio = 'N';
+		}
+		
+		if (inicio == 'N') {
+			System.out.println("\nQue pena...");
+			System.out.println("Encerrando o jogo...");
+		}
 		
 		teclado.close();
 		
@@ -73,13 +94,13 @@ public class Jogo {
 		
 		if (modo == 1) {
 			comp = new ModoA(simbolo, tab);
-			System.out.println("VocÃª vai jogar no modo 'A'");
+			System.out.println("\nVocê escolheu jogar no modo 'A'");
 		} else if (modo == 2) {
 			comp = new ModoB(simbolo, tab);			
-			System.out.println("VocÃª vai jogar no modo 'B'");
+			System.out.println("\nVocê escolheu jogar no modo 'B'");
 		} else {
 			comp = new ModoC(simbolo, tab);
-			System.out.println("VocÃª vai jogar no modo 'C'");
+			System.out.println("\nVocê escolheu jogar no modo 'C'");
 		}
 		return comp;
 	}
