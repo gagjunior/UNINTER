@@ -1,11 +1,8 @@
 package br.com.gagjunior.jv;
 
-import java.util.Scanner;
-
 public class Humano extends Jogador {
 	
 	private String nome;
-	private int posicao;
 
 	Humano(String simbolo, Tabuleiro tab, String nome) {
 		super(simbolo, tab);
@@ -13,37 +10,26 @@ public class Humano extends Jogador {
 	}	
 	
 	@Override
-	public boolean jogar() {
-		Scanner teclado = new Scanner(System.in);
-		System.out.print("Digite o numero da posição que deseja jogar: ");
-		try {
-			posicao = teclado.nextInt() ;
-			teclado.nextLine();
-			posicao -= 1;
-			
-		} catch (Exception e) {
-			e.getStackTrace();
-		} finally {
-			teclado.close();			
-		}
+	public boolean jogar(int posicao) {
+		int indice = posicao - 1;
 		
-		
-		if (!posicaoEhValida(posicao + 1)) {
+		if (!posicaoEhValida(posicao)) {
 			System.out.println("O valor digitado deve estar entre 1 e 9!");
 			return false;
 		}
 		
-		if (!posicaoEhLivre(posicao)) {
-			System.out.println("A posição do numero " + (posicao + 1) + " não está livre!");
+		if (!posicaoEhLivre(indice)) {
+			System.out.println("A posição do numero " + (posicao) + " não está livre!");
 			return false;			
 		}
 		
-		this.tab.campo.add(posicao, getSimbolo());
+		tab.campo.add(indice, this.getSimbolo());
+		
 		return true;
 	}
 	
 	boolean posicaoEhValida(int posicao) {		
-		return posicao < 1 || posicao > 9 ? false : true;
+		return posicao > 9 ? false : true;
 	}
 
 	public String getNome() {

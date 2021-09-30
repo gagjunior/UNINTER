@@ -23,33 +23,30 @@ public class Jogo {
 		System.out.print("Digite seu nome: ");
 		nomeJogador = teclado.nextLine();
 		
+		System.out.println();
 		
-		System.out.println("\n" + nomeJogador + ", Seja bem vindo ao jogo da velha!!\n");
-		
-		System.out.println("Escolha com qual simbolo você quer jogar...");
+		System.out.println("*** Simbolos ***");
 		System.out.println("1 - X");
 		System.out.println("2 - O");
-		System.out.print("Digite o numero do simbolo: \n");
+		System.out.print("Escolha com qual simbolo você quer jogar. Digite o numero 1 ou 2: ");
 		
 		opcaoSimbolo = teclado.nextInt();
 		teclado.nextLine();
 		
+		System.out.println();
+		
 		simboloHum = opcaoSimbolo == 1 ? "X" : "O";
 		simboloComp = simboloHum.equals("X") ? "O" : "X";
 		
-		System.out.println("Você vai jogar com o simbolo: " + simboloHum + "\n");
+		Humano humano = new Humano(simboloHum, tab, nomeJogador);
 		
-		Jogador humano = new Humano(simboloHum, tab, nomeJogador);
+		System.out.println(humano.getNome() + ",  ");
+	
 		Computador maquina = setModoJogo(modoJogo, comp, simboloComp, teclado, tab);
 		
 		tab.imprimirPosicoes();
 		tab.imprimirTabuleiro();
-		
-		humano.jogar();
-		
-		tab.imprimirPosicoes();
-		tab.imprimirTabuleiro();
-		
+				
 		
 		teclado.close();
 		

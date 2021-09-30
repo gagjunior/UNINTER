@@ -7,7 +7,7 @@ public class ModoB extends Computador {
 	}
 
 	@Override
-	boolean jogar() {
+	boolean jogar(int posicao) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -11,7 +11,7 @@ public abstract class Jogador {
 		this.tab = tab;
 	}
 	
-	abstract boolean jogar();
+	abstract boolean jogar(int posicao);
 	
 	boolean posicaoEhLivre(int indice) {
 		if (!tab.campo.get(indice).equals("-")) {
