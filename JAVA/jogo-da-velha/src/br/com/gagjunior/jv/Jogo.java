@@ -17,7 +17,7 @@ public class Jogo {
 		Computador comp = null;
 		
 		//Titulo do jogo
-		exibirTitulo();		
+		Interface.exibirTitulo();
 		
 		Scanner teclado = new Scanner(System.in);
 		
@@ -26,11 +26,8 @@ public class Jogo {
 		
 		System.out.println();
 		
-		System.out.println("*** Simbolos ***");
-		System.out.println("1 - X");
-		System.out.println("2 - O");
-		System.out.println("Escolha com qual simbolo você quer jogar.");
-		System.out.print("Digite o numero 1 ou 2: ");
+		//Escolhe simbolo
+		Interface.solicitaSimbolo();
 		
 		opcaoSimbolo = teclado.nextInt();
 		teclado.nextLine();
@@ -42,8 +39,8 @@ public class Jogo {
 		
 		Humano humano = new Humano(simboloHum, tab, nomeJogador);
 		
-		System.out.println(humano.getNome() + ",  bem vindo ao Jogo da Velha");
-		System.out.println("Você vai jogar com o simbolo: " + humano.getSimbolo());
+		//Boas vindas
+		Interface.msgBoasVindas(humano);
 		
 		System.out.println();
 	
@@ -51,17 +48,27 @@ public class Jogo {
 		
 		System.out.println();
 		
-		System.out.println("Deseja iniciar a partida?");
-		System.out.print("Digite S - sim / N - não: ");
+		// Iniciar partida?
+		Interface.msgIniciar();
 				
 		inicio = teclado.nextLine().toUpperCase().charAt(0);
 		
 		while (inicio == 'S') {
-			tab.imprimirPosicoes();
+			System.out.println();
+			
+			tab.imprimirTabuleiro();
 			
 			System.out.println();
 			
-			inicio = 'N';
+			Interface.solicitarPosicao();
+			int posicao = teclado.nextInt();
+			teclado.nextLine();
+			humano.jogar(posicao);
+			
+			System.out.println();
+			
+			Interface.msgContinuarJogo();			
+			inicio = teclado.nextLine().toUpperCase().charAt(0);
 		}
 		
 		if (inicio == 'N') {
@@ -73,34 +80,24 @@ public class Jogo {
 		
 	}
 	
-	// Exibir titulo do jogo
-	static void exibirTitulo() {
-		System.out.println("XOXOXOXOXOXOXOXOXOXOXOXOXOXOX");
-		System.out.println("X      JOGO DA VELHA        O");
-		System.out.println("XOXOXOXOXOXOXOXOXOXOXOXOXOXOX");
-		System.out.println();		
-	}
 	
 	// Setar o modo de jogo
 	static Computador setModoJogo (int modo, Computador comp, String simbolo, Scanner teclado, Tabuleiro tab) {
-		System.out.println("***Modos de Jogo***");
-		System.out.println("1 - Modo A");
-		System.out.println("2 - Modo B");
-		System.out.println("3 - Modo C");
-		System.out.print("Digite o numero do modo que deseja jogar: ");
+		
+		Interface.msgModoJogo();
 		
 		modo = teclado.nextInt();		
 		teclado.nextLine();
 		
 		if (modo == 1) {
 			comp = new ModoA(simbolo, tab);
-			System.out.println("\nVocê escolheu jogar no modo 'A'");
+			System.out.println("\nVoce escolheu jogar no modo 'A'");
 		} else if (modo == 2) {
 			comp = new ModoB(simbolo, tab);			
-			System.out.println("\nVocê escolheu jogar no modo 'B'");
+			System.out.println("\nVoce escolheu jogar no modo 'B'");
 		} else {
 			comp = new ModoC(simbolo, tab);
-			System.out.println("\nVocê escolheu jogar no modo 'C'");
+			System.out.println("\nVoce escolheu jogar no modo 'C'");
 		}
 		return comp;
 	}

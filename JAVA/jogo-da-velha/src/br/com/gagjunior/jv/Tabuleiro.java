@@ -14,7 +14,8 @@ public class Tabuleiro {
 		}				
 	}
 	
-	void imprimirPosicoes() {
+	void imprimirTabuleiro() {
+		System.out.println("Posições | Tabuleiro\n");
 		for (int i=0; i < tamanhoCampo; i++) {
 			
 			if (campo.get(i).equals("-")) {
@@ -23,21 +24,29 @@ public class Tabuleiro {
 				System.out.print(" - ");
 			}
 				
-			if (i == 2 || i == 5) {
-				System.out.print(" " + campo.get(i) + " ");
+			if (i == 2) {
+				System.out.print("|");
+				for (int j=0; j <= 2; j++) {
+					System.out.print(" " + campo.get(j) + " ");					
+				}
 				System.out.println();				
 			}
-		}		
-	}
-	
-	void imprimirTabuleiro() {
-		for (int i=0; i < tamanhoCampo; i++) {
 			
-			System.out.print(" " + campo.get(i) + " ");
-						
-			if (i == 2 || i == 5) {
-				System.out.println();				
+			if (i == 5) {
+				System.out.print("|");
+				for (int k = 3; k <= 5; k++) {
+					System.out.print(" " + campo.get(k) + " ");					
+				}
+				System.out.println();
+			}
+			
+			if (i == 8) {
+				System.out.print("|");
+				for (int l = 6; l < tamanhoCampo; l++) {
+					System.out.print(" " + campo.get(l) + " ");		
+				}				
 			}
 		}
+		System.out.println();
 	}
 }
