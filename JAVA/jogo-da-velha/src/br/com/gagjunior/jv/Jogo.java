@@ -14,7 +14,7 @@ public class Jogo {
 		String simboloHum;
 		String simboloComp;
 		Tabuleiro tab = new Tabuleiro();
-		Computador comp = null;
+		boolean status = true;
 		
 		//Titulo do jogo
 		Interface.exibirTitulo();
@@ -44,7 +44,7 @@ public class Jogo {
 		
 		System.out.println();
 	
-		Computador maquina = setModoJogo(modoJogo, comp, simboloComp, teclado, tab);
+		Computador maquina = setModoJogo(modoJogo, simboloComp, teclado, tab);
 		
 		System.out.println();
 		
@@ -56,14 +56,21 @@ public class Jogo {
 		while (inicio == 'S') {
 			System.out.println();
 			
-			tab.imprimirTabuleiro();
-			
+			tab.imprimirTabuleiro();			
 			System.out.println();
 			
-			Interface.solicitarPosicao();
-			int posicao = teclado.nextInt();
-			teclado.nextLine();
-			humano.jogar(posicao);
+			while (status) {
+				Interface.solicitarPosicao();
+				int posicao = teclado.nextInt();
+				teclado.nextLine();
+				humano.jogar(posicao);
+				maquina.jogar();
+				
+				System.out.println();
+				tab.imprimirTabuleiro();
+				System.out.println();
+			}
+			
 			
 			System.out.println();
 			
@@ -82,7 +89,7 @@ public class Jogo {
 	
 	
 	// Setar o modo de jogo
-	static Computador setModoJogo (int modo, Computador comp, String simbolo, Scanner teclado, Tabuleiro tab) {
+	static Computador setModoJogo (int modo, String simbolo, Scanner teclado, Tabuleiro tab) {
 		
 		Interface.msgModoJogo();
 		
@@ -90,16 +97,18 @@ public class Jogo {
 		teclado.nextLine();
 		
 		if (modo == 1) {
-			comp = new ModoA(simbolo, tab);
 			System.out.println("\nVoce escolheu jogar no modo 'A'");
+			ModoA comp = new ModoA(simbolo, tab);
+			return comp;
 		} else if (modo == 2) {
-			comp = new ModoB(simbolo, tab);			
 			System.out.println("\nVoce escolheu jogar no modo 'B'");
+			ModoB comp = new ModoB(simbolo, tab);
+			return comp;
 		} else {
-			comp = new ModoC(simbolo, tab);
 			System.out.println("\nVoce escolheu jogar no modo 'C'");
+			ModoC comp = new ModoC(simbolo, tab);
+			return comp;
 		}
-		return comp;
 	}
 
 }

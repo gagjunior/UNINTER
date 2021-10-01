@@ -50,8 +50,7 @@ public abstract class Interface {
 	}
 	
 	static void solicitarPosicao() {
-		System.out.println("Escolha uma posição para jogar");
-		System.out.print("Digite o numero da posição que estiver livre: ");
+		System.out.print("Digite o numero da posicao: ");
 	}
 
 }

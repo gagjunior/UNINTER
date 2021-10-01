@@ -19,11 +19,11 @@ public class Humano extends Jogador {
 		}
 		
 		if (!posicaoEhLivre(indice)) {
-			System.out.println("A posição do numero " + (posicao) + " não está livre!");
+			System.out.println("A posicao do numero " + (posicao) + " nao esta livre!");
 			return false;			
 		}
 		
-		tab.campo.add(indice, this.getSimbolo());
+		tab.campo[indice] = getSimbolo();
 		
 		return true;
 	}

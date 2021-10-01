@@ -11,13 +11,20 @@ public abstract class Jogador {
 		this.tab = tab;
 	}
 	
-	abstract boolean jogar(int posicao);
+	
+	boolean jogar() {
+		return true;
+	}
+	
+	boolean jogar(int posicao) {
+		return true;
+	}
 	
 	boolean posicaoEhLivre(int indice) {
-		if (!tab.campo.get(indice).equals("-")) {
-			return false;			
+		if (tab.campo[indice].equals("-")) {
+			return true;			
 		}
-		return true;
+		return false;
 	}
 		
 	
