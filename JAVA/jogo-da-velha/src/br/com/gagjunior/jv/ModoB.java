@@ -7,9 +7,16 @@ public class ModoB extends Computador {
 	}
 
 	@Override
-	boolean jogar(int posicao) {
-		// TODO Auto-generated method stub
-		return false;
+	boolean jogar() {
+		if (posicaoEhLivre(0)) {
+			tab.campo[0] = getSimbolo();
+			return true;
+		} else if (tab.campo[0].equals(getSimbolo()) && posicaoEhLivre(4)) {
+			tab.campo[4] = getSimbolo();
+			return true;
+		}
+		
+		return false;		
 	}
 
 }

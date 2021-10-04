@@ -14,17 +14,21 @@ public class ModoA extends Computador {
 	@Override
 	boolean jogar() {
 		
-		Random aleatorio = new Random();
-		this.posicao = aleatorio.nextInt(8);
-		
-		while (!posicaoEhLivre(posicao)) {
-			System.out.println(posicao);
-			posicao = aleatorio.nextInt(8);
+		if (tab.getJogadas() < 8) {
+			
+			Random aleatorio = new Random();
+			this.posicao = aleatorio.nextInt(8);
+			
+			while (!posicaoEhLivre(posicao)) {
+				posicao = aleatorio.nextInt(8);
+			}
+			
+			tab.campo[posicao] = getSimbolo();
+			
+			return true;
 		}
-		
-		tab.campo[posicao] = getSimbolo();
-		
-		return true;		
+		return false;
+				
 	}
 
 }

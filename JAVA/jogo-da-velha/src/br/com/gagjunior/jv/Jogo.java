@@ -4,18 +4,19 @@ import java.util.Scanner;
 
 //Classe principal
 public class Jogo {
+	
+	static String nomeJogador;
+	static int modoJogo = 0;
+	static int opcaoSimbolo = 0;
+	static char inicio;
+	static String simboloHum;
+	static String simboloComp;
+	static Tabuleiro tab = new Tabuleiro();
+	static int partidas;
+	static int jogadas;
 
 	public static void main(String[] args) {
-		
-		String nomeJogador;
-		int modoJogo = 0;
-		int opcaoSimbolo = 0;
-		char inicio;
-		String simboloHum;
-		String simboloComp;
-		Tabuleiro tab = new Tabuleiro();
-		boolean status = true;
-		
+				
 		//Titulo do jogo
 		Interface.exibirTitulo();
 		
@@ -41,42 +42,50 @@ public class Jogo {
 		
 		//Boas vindas
 		Interface.msgBoasVindas(humano);
-		
-		System.out.println();
 	
 		Computador maquina = setModoJogo(modoJogo, simboloComp, teclado, tab);
 		
 		System.out.println();
 		
 		// Iniciar partida?
-		Interface.msgIniciar();
-				
+		Interface.msgIniciar();				
 		inicio = teclado.nextLine().toUpperCase().charAt(0);
 		
 		while (inicio == 'S') {
+			jogadas = 0;
+			tab.setJogadas(jogadas);
+			
+			tab.limpaTabuleiro();
 			System.out.println();
 			
 			tab.imprimirTabuleiro();			
 			System.out.println();
 			
-			while (status) {
+			while (jogadas <= 9) {
 				Interface.solicitarPosicao();
 				int posicao = teclado.nextInt();
 				teclado.nextLine();
 				humano.jogar(posicao);
+				jogadas++;
 				maquina.jogar();
+				jogadas++;
 				
 				System.out.println();
 				tab.imprimirTabuleiro();
 				System.out.println();
+				
+				tab.setJogadas(jogadas);
 			}
 			
+			partidas++;
 			
 			System.out.println();
 			
 			Interface.msgContinuarJogo();			
 			inicio = teclado.nextLine().toUpperCase().charAt(0);
 		}
+		
+		tab.setPartidas(partidas);
 		
 		if (inicio == 'N') {
 			System.out.println("\nQue pena...");
