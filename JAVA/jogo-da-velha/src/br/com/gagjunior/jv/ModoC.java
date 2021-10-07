@@ -17,8 +17,18 @@ public class ModoC extends Computador {
 				
 				if (!posicaoEhLivre(2) && !tab.campo[2].equals(getSimbolo())) {
 					modoA.jogar();					
+				} else if (posicaoEhLivre(2)) {
+					tab.campo[2] = getSimbolo();
+				} else if (tab.campo[2].equals(getSimbolo()) && posicaoEhLivre(5)) {
+					tab.campo[5] = getSimbolo();
+				} else if (tab.campo[5].equals(getSimbolo()) && posicaoEhLivre(8)) {
+					tab.campo[8] = getSimbolo();					
+				} else {
+					modoA.jogar();
 				}
 				
+			} else if (posicaoEhLivre(1)) {
+				tab.campo[1] = getSimbolo();				
 			}			
 			
 			// Tenta jogar nas horizontais
