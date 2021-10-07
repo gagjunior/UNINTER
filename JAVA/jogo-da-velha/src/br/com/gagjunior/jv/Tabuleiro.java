@@ -6,7 +6,7 @@ public class Tabuleiro {
 	private int partidas;
 
 	private int tamanhoCampo = 9;
-	String[] campo = new String[tamanhoCampo];
+	String campo[] = new String[tamanhoCampo];
 
 	Tabuleiro() {
 		limpaTabuleiro();
