@@ -21,10 +21,11 @@ public abstract class Jogador {
 	}
 	
 	boolean posicaoEhLivre(int indice) {
-		if (tab.campo[indice].equals("-")) {
-			return true;			
-		}
-		return false;
+		return tab.campo[indice].equals("-") 
+	}
+	
+	boolean posicaoEhIgual(int indice, String simbolo) {		
+		return tab.campo[indice].equals(simbolo) ? true : false;
 	}
 		
 	
