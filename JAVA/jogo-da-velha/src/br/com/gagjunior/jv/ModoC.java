@@ -10,79 +10,48 @@ public class ModoC extends Computador {
 
 	@Override
 	boolean jogar() {
-
-		if (!posicaoEhLivre(0) && !tab.campo[0].equals(getSimbolo())) {
-
-			if (!posicaoEhLivre(1) && !tab.campo[1].equals(getSimbolo())) {
-
-				if (!posicaoEhLivre(2) && !tab.campo[2].equals(getSimbolo())) {
-					modoA.jogar();
-					return true;
-				} else if (posicaoEhLivre(2)) {
-					tab.campo[2] = getSimbolo();
-					return true;
-				} else if (tab.campo[2].equals(getSimbolo()) && posicaoEhLivre(5)) {
-					tab.campo[5] = getSimbolo();
-					return true;
-				} else if (tab.campo[5].equals(getSimbolo()) && posicaoEhLivre(8)) {
-					tab.campo[8] = getSimbolo();
-					return true;
-				} else {
-					modoA.jogar();
-					return true;
-				}
-
-			} else if (posicaoEhLivre(1)) {
-				tab.campo[1] = getSimbolo();
-				return true;
-			} else if (tab.campo[1].equals(getSimbolo()) && posicaoEhLivre(4)) {
-				tab.campo[4] = getSimbolo();
-				return true;
-			} else if (tab.campo[4].equals(getSimbolo()) && posicaoEhLivre(7)) {
-				tab.campo[7] = getSimbolo();
+		
+		// Tenta sempre jogar nas horizontais
+		for (int i = 0; i < tab.campo.length; i++) {
+			
+			if (posicaoEhLivre(i)) {
+				registraPosicao(i, getSimbolo());
 				return true;
 			}
-
-			if (!posicaoEhLivre(3) && !tab.campo[3].equals(getSimbolo())) {
-
-				if (!posicaoEhLivre(6) && !tab.campo[6].equals(getSimbolo())) {
-					modoA.jogar();
-					return true;
-				} else if (posicaoEhLivre(6)) {
-					tab.campo[6] = getSimbolo();
-					return true;
-				} else if (tab.campo[6].equals(getSimbolo()) && posicaoEhLivre(7)) {
-					tab.campo[7] = getSimbolo();
-					return true;
-				} else if (tab.campo[7].equals(getSimbolo()) && posicaoEhLivre(8)) {
-					tab.campo[8] = getSimbolo();
-					return true;
-				} else {
-					modoA.jogar();
-					return true;
+			
+			if (!posicaoEhLivre(i) && posicaoEhIgual(i, getSimbolo()) && posicaoEhLivre(i + 1)) {
+				registraPosicao(i + 1, getSimbolo());
+				return true;
+				
+			} else if (!posicaoEhIgual(i + 1, getSimbolo())) {
+				
+				// Tenta jogar nas verticais se não conseguir nas horizontais				
+				for (int j = 0; j <= 6; j+=3 ) {					
+					if (posicaoEhLivre(j)) {
+						registraPosicao(j, getSimbolo());
+						return true;
+					}					
 				}
-
-			} else if (posicaoEhLivre(3)) {
-				tab.campo[3] = getSimbolo();
-				return true;
-			} else if (tab.campo[3].equals(getSimbolo()) && posicaoEhLivre(4)) {
-				tab.campo[4] = getSimbolo();
-				return true;
-			} else if (tab.campo[4].equals(getSimbolo()) && posicaoEhLivre(5)) {
-				tab.campo[5] = getSimbolo();
+				
+				for (int k = 1; k <= 7; k+=3 ) {					
+					if (posicaoEhLivre(k)) {
+						registraPosicao(k, getSimbolo());
+						return true;
+					}					
+				}
+				
+				for (int l = 2; l <= 8; l+=3 ) {					
+					if (posicaoEhLivre(l)) {
+						registraPosicao(l, getSimbolo());
+						return true;
+					}					
+				}
+				
 				return true;
 			}
-
-		} else if (posicaoEhLivre(0)) {
-			tab.campo[0] = getSimbolo();
-		} else if (tab.campo[0].equals(getSimbolo()) && posicaoEhLivre(1)) {
-			tab.campo[1] = getSimbolo();
-		} else if (tab.campo[1].equals(getSimbolo()) && posicaoEhLivre(2)) {
-			tab.campo[2] = getSimbolo();
-		} else {
-			modoA.jogar();
+			
 		}
-
+		
 		return true;
 	}
 
