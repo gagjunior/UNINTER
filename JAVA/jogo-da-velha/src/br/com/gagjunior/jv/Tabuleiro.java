@@ -7,7 +7,7 @@ public class Tabuleiro {
 
 	private int tamanhoCampo = 9;
 	String campo[] = new String[tamanhoCampo];
-
+	
 	Tabuleiro() {
 		limpaTabuleiro();
 	}
@@ -32,6 +32,18 @@ public class Tabuleiro {
 
 	public void setPartidas(int partidas) {
 		this.partidas = partidas;
+	}
+	
+	boolean verificaGanhador() {
+		
+		if (jogadas >= 5) {
+			
+			if () {
+				
+			}
+						
+		}
+		return false;
 	}
 
 	void imprimirTabuleiro() {
