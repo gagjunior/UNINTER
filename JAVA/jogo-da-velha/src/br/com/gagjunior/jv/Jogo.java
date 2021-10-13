@@ -61,7 +61,7 @@ public class Jogo {
 			tab.imprimirTabuleiro();			
 			System.out.println();
 			
-			while (jogadas <= 9) {
+			while (jogadas <= 9 && tab.simboloGanhador().equals("")) {
 				Interface.solicitarPosicao();
 				int posicao = teclado.nextInt();
 				teclado.nextLine();

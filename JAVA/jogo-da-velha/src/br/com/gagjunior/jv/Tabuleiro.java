@@ -34,16 +34,21 @@ public class Tabuleiro {
 		this.partidas = partidas;
 	}
 	
-	boolean verificaGanhador() {
+	String simboloGanhador() {
 		
 		if (jogadas >= 5) {
 			
-			if () {
-				
+			for (int i = 0; i < 3; i+=3) {
+				if (!campo[i].equals("-")) {
+					if (campo[i].equals(campo[i + 1]) && campo[i + 1].equals(campo[i + 2])) {
+						return campo[i];						
+					}
+				}				
 			}
-						
+			
+			return "";						
 		}
-		return false;
+		return "";
 	}
 
 	void imprimirTabuleiro() {
