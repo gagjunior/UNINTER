@@ -2,11 +2,13 @@ package br.com.gagjunior.jv;
 
 import java.util.Scanner;
 
+import com.sun.source.tree.WhileLoopTree;
+
 //Classe principal
 public class Jogo {
 
 	static String nomeJogador;
-	static int modoJogo = 0;
+	static String modoJogo;
 	static String opcaoSimbolo;
 	static String inicio;
 	static String simboloHum;
@@ -50,7 +52,7 @@ public class Jogo {
 		// Mensagem de boas vindas
 		Interface.msgBoasVindas(humano);
 
-		Computador maquina = setModoJogo(modoJogo, simboloComp, teclado, tab);
+		Computador maquina = setModoJogo(simboloComp, teclado, tab);
 
 		System.out.println();
 
@@ -68,7 +70,7 @@ public class Jogo {
 			}			
 		}
 
-		while (inicio == "S") {
+		while (inicio.equals("S")) {
 			String ganhador = "";
 			jogadas = 0;
 			tab.setJogadas(jogadas);
@@ -80,13 +82,23 @@ public class Jogo {
 			System.out.println();
 
 			while (jogadas <= 9 && ganhador.equals("")) {
-
-				Interface.solicitarPosicao();
-				int posicao = teclado.nextInt();
-				teclado.nextLine();
+				
+				String posicao = "";
+				
+				while (posicao.equals("")) {
+					Interface.solicitarPosicao();
+					posicao = teclado.nextLine();
+					
+					if (!posicao.matches("[1-9]")) {
+						System.out.println("\nPosicao invalida. Digite um numero entre 1 e 9");
+						posicao = "";
+					}
+					
+				}				
+				
 
 				if (ganhador.equals("")) {
-					humano.jogar(posicao);
+					humano.jogar(Integer.valueOf(posicao));
 					jogadas++;
 					ganhador = tab.simboloGanhador(jogadas);
 				}
@@ -145,26 +157,39 @@ public class Jogo {
 	}
 
 	// Setar o modo de jogo
-	static Computador setModoJogo(int modo, String simbolo, Scanner teclado, Tabuleiro tab) {
-
-		Interface.msgModoJogo();
-
-		modo = teclado.nextInt();
-		teclado.nextLine();
-
-		if (modo == 1) {
-			System.out.println("\nVoce escolheu jogar no modo 'A'");
-			ModoA comp = new ModoA(simbolo, tab);
-			return comp;
-		} else if (modo == 2) {
-			System.out.println("\nVoce escolheu jogar no modo 'B'");
-			ModoB comp = new ModoB(simbolo, tab);
-			return comp;
-		} else {
-			System.out.println("\nVoce escolheu jogar no modo 'C'");
-			ModoC comp = new ModoC(simbolo, tab);
-			return comp;
+	static Computador setModoJogo(String simbolo, Scanner teclado, Tabuleiro tab) {
+		String modoJogo = "";
+		
+		while (modoJogo.equals("")) {
+			
+			Interface.msgModoJogo();
+			modoJogo = teclado.nextLine();
+			
+			if (modoJogo.equals("1") || modoJogo.equals("2") || modoJogo.equals("3")) {
+				
+				if (modoJogo.equals("1")) {
+					System.out.println("\nVoce escolheu jogar no modo 'A'");
+					ModoA comp = new ModoA(simbolo, tab);
+					return comp;
+				} else if (modoJogo.equals("2")) {
+					System.out.println("\nVoce escolheu jogar no modo 'B'");
+					ModoB comp = new ModoB(simbolo, tab);
+					return comp;
+				} else {
+					System.out.println("\nVoce escolheu jogar no modo 'C'");
+					ModoC comp = new ModoC(simbolo, tab);
+					return comp;
+				}
+				
+			} else {
+				System.out.println("\nValor invalido. Digite um numero entre 1 e 3\n");
+				modoJogo = "";
+			}		
+			
 		}
+		
+		return null;
+
 	}
 
 }
