@@ -34,11 +34,12 @@ public class Tabuleiro {
 		this.partidas = partidas;
 	}
 	
-	String simboloGanhador() {
+	String simboloGanhador(int jogadas) {
 		
 		if (jogadas >= 5) {
 			
-			for (int i = 0; i < 3; i+=3) {
+			//Verifica se houve vencedor nas horizontais
+			for (int i = 0; i <= 6; i+=3) {
 				if (!campo[i].equals("-")) {
 					if (campo[i].equals(campo[i + 1]) && campo[i + 1].equals(campo[i + 2])) {
 						return campo[i];						
@@ -46,8 +47,31 @@ public class Tabuleiro {
 				}				
 			}
 			
+			//Verifica se houve vencedor nas verticais
+			for (int j = 0; j < 3; j++) {
+				if (!campo[j].equals("-")) {
+					if (campo[j].equals(campo[j + 3]) && campo[j + 3].equals(campo[j + 6])) {
+						return campo[j];						
+					}					
+				}				
+			}
+			
+			//Verifica se houve vencedor nas 1 diagonal
+			if (!campo[0].equals("-")) {
+				if (campo[0].equals(campo[4]) && campo[4].equals(campo[8])) {
+					return campo[0];					
+				}				
+			}
+			
+			if (!campo[2].equals("-")) {
+				if (campo[2].equals(campo[4]) && campo[4].equals(campo[6])) {
+					return campo[2];					
+				}				
+			}
+			
 			return "";						
 		}
+		
 		return "";
 	}
 

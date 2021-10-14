@@ -4,6 +4,7 @@ public abstract class Jogador {
 	
 	private String simbolo;
 	private int vitorias;
+	private int empates;
 	Tabuleiro tab;
 	
 	Jogador (String simbolo, Tabuleiro tab) {
@@ -47,7 +48,19 @@ public abstract class Jogador {
 
 	public void setVitorias(int vitorias) {
 		this.vitorias = vitorias;
-	}	
+	}
+
+
+	public int getEmpates() {
+		return empates;
+	}
+
+
+	public void setEmpates(int empates) {
+		this.empates = empates;
+	}
+	
+	
 	
 
 }
