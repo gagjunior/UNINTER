@@ -8,7 +8,7 @@ public class Jogo {
 	static String nomeJogador;
 	static int modoJogo = 0;
 	static String opcaoSimbolo;
-	static char inicio;
+	static String inicio;
 	static String simboloHum;
 	static String simboloComp;
 	static Tabuleiro tab = new Tabuleiro();
@@ -31,15 +31,14 @@ public class Jogo {
 		opcaoSimbolo = "";
 		
 		while (opcaoSimbolo.equals("")) {
-			Interface.solicitaSimbolo();
-			
+			Interface.solicitaSimbolo();			
 			opcaoSimbolo = teclado.nextLine();
 			
 			if (opcaoSimbolo.equals("1") || opcaoSimbolo.equals("2")) {
 				simboloHum = opcaoSimbolo.equals("1") ? "X" : "O";
 				simboloComp = simboloHum.equals("X") ? "O" : "X";					
 			} else {
-				System.out.println("\nVoce não digitou uma opcao valida\n");
+				System.out.println("\nVoce nao digitou uma opcao valida\n");
 				opcaoSimbolo = "";
 			}			
 		}
@@ -48,7 +47,7 @@ public class Jogo {
 		
 		System.out.println();
 
-		// Boas vindas
+		// Mensagem de boas vindas
 		Interface.msgBoasVindas(humano);
 
 		Computador maquina = setModoJogo(modoJogo, simboloComp, teclado, tab);
@@ -56,10 +55,20 @@ public class Jogo {
 		System.out.println();
 
 		// Iniciar partida?
-		Interface.msgIniciar();
-		inicio = teclado.nextLine().toUpperCase().charAt(0);
+		inicio = "";
+		
+		while (inicio.equals("")) {
+			Interface.msgIniciar();
+			inicio = teclado.nextLine();
+			
+			if (inicio.toUpperCase().equals("S") || inicio.toUpperCase().equals("N")) {
+				inicio = inicio.toUpperCase();
+			} else {
+				inicio = "";
+			}			
+		}
 
-		while (inicio == 'S') {
+		while (inicio == "S") {
 			String ganhador = "";
 			jogadas = 0;
 			tab.setJogadas(jogadas);
@@ -114,12 +123,12 @@ public class Jogo {
 			System.out.println();
 
 			Interface.msgContinuarJogo();
-			inicio = teclado.nextLine().toUpperCase().charAt(0);
+			inicio = teclado.nextLine().toUpperCase();
 		}
 
 		tab.setPartidas(partidas);
 
-		if (inicio == 'N') {
+		if (inicio == "N") {
 			float aproveitamento = ((float) humano.getVitorias() / (float) tab.getPartidas()) * 100;
 			System.out.println("\nQue pena...\n");
 			System.out.println("**** Estatisticas ****");

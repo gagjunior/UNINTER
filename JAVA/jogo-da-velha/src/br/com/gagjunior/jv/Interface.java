@@ -1,3 +1,11 @@
+/**
+ * Classe abstrata para interação com o jogador humano
+ * Exibe a maior parte das mensagens na tela para o jogador
+ * @author Gilberto A. G. Junior
+ * @ru 143586
+ * @since 14/10/2021
+ * */
+
 package br.com.gagjunior.jv;
 
 public abstract class Interface {

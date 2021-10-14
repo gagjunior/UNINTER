@@ -1,3 +1,11 @@
+/**
+ * Classe para criar um jogador do tipo Humano.
+ * Esta é uma classe filha de Jogador
+ * @author Gilberto A. G. Junior
+ * @ru 143586
+ * @since 14/10/2021
+ * */
+
 package br.com.gagjunior.jv;
 
 public class Humano extends Jogador {
@@ -9,6 +17,7 @@ public class Humano extends Jogador {
 		this.nome = nome;		
 	}	
 	
+	//Sobrescreve metodo 'jogar' da classe pai
 	@Override
 	public boolean jogar(int posicao) {
 		int indice = posicao - 1;
