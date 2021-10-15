@@ -1,3 +1,13 @@
+/**
+ * Classe para criar um modo de jogo do tipo 'ModoA'.
+ * Esta e uma classe filha de Computador
+ * Neste modo o computador joga aleatoriamente
+ * 
+ * @author Gilberto A. G. Junior
+ * @ru 143586
+ * @since 14/10/2021
+ * */
+
 package br.com.gagjunior.jv;
 
 import java.util.Random;
@@ -11,6 +21,8 @@ public class ModoA extends Computador {
 		
 	}
 
+	// Sobrescreve o metodo jogar
+	// Joga no modo aleatorio
 	@Override
 	boolean jogar() {
 		
@@ -19,6 +31,7 @@ public class ModoA extends Computador {
 			Random aleatorio = new Random();
 			this.posicao = aleatorio.nextInt(8);
 			
+			// Verifica se a posicao esta livre
 			while (!posicaoEhLivre(posicao)) {
 				posicao = aleatorio.nextInt(8);
 			}

@@ -1,6 +1,7 @@
 /**
- * Classe abstrata para interação com o jogador humano
+ * Classe abstrata para interacao com o jogador humano
  * Exibe a maior parte das mensagens na tela para o jogador
+ * 
  * @author Gilberto A. G. Junior
  * @ru 143586
  * @since 14/10/2021
@@ -57,6 +58,7 @@ public abstract class Interface {
 		System.out.print("Digite o numero do modo que deseja jogar: ");
 	}
 	
+	// Solicitar posicao
 	static void solicitarPosicao() {
 		System.out.print("Digite o numero da posicao: ");
 	}

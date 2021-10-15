@@ -1,6 +1,7 @@
 /**
- * Classe para criar um jogador do tipo Humano.
- * Esta é uma classe filha de Jogador
+ * Classe para criar um jogador do tipo 'Humano'.
+ * Esta e uma classe filha de Jogador
+ * 
  * @author Gilberto A. G. Junior
  * @ru 143586
  * @since 14/10/2021
@@ -17,30 +18,15 @@ public class Humano extends Jogador {
 		this.nome = nome;		
 	}	
 	
-	//Sobrescreve metodo 'jogar' da classe pai
+	//Sobrescreve metodo 'jogar' da classe pai 'Jogador'	
 	@Override
 	public boolean jogar(int posicao) {
-		int indice = posicao - 1;
-		
-		if (!posicaoEhValida(posicao)) {
-			System.out.println("O valor digitado deve estar entre 1 e 9!");
-			return false;
-		}
-		
-		if (!posicaoEhLivre(indice)) {
-			System.out.println("A posicao do numero " + (posicao) + " nao esta livre!");
-			return false;			
-		}
-		
-		tab.campo[indice] = getSimbolo();
-		
+		int indice = posicao - 1;		
+		tab.campo[indice] = getSimbolo();		
 		return true;
 	}
 	
-	boolean posicaoEhValida(int posicao) {		
-		return posicao > 9 ? false : true;
-	}
-
+	//Getters e Setters
 	public String getNome() {
 		return nome;
 	}

@@ -1,3 +1,12 @@
+/**
+ * Classe para criar um modo de jogo do tipo 'ModoB'.
+ * Esta e uma classe filha de Computador
+ * Neste modo o computador tenta jogar nas diagonais
+ * 
+ * @author Gilberto A. G. Junior
+ * @ru 143586
+ * @since 14/10/2021
+ * */
 
 package br.com.gagjunior.jv;
 
@@ -9,6 +18,8 @@ public class ModoB extends Computador {
 	
 	ModoA modoA = new ModoA(this.getSimbolo(), this.tab);
 
+	// Forca as jogadas pelas diagonais
+	// Se nao for possivel jogar nas diagonais joga no ModoA (aleatorio)
 	@Override
 	boolean jogar() {
 		if (!posicaoEhLivre(0) && !tab.campo[0].equals(getSimbolo())) {

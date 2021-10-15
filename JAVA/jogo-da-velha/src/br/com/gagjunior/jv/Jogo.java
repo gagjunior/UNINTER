@@ -1,8 +1,14 @@
+/**
+ * Classe principal, que contem o ponto de entrada do programa
+ * 
+ * @author Gilberto Junior
+ * @ru 143586
+ * @since 14/10/2021
+ **/
+
 package br.com.gagjunior.jv;
 
 import java.util.Scanner;
-
-import com.sun.source.tree.WhileLoopTree;
 
 //Classe principal
 public class Jogo {
@@ -24,6 +30,7 @@ public class Jogo {
 
 		Scanner teclado = new Scanner(System.in);
 
+		// Solicita e salva o nome do jogador humano
 		System.out.print("Digite seu nome: ");
 		nomeJogador = teclado.nextLine();
 
@@ -32,6 +39,8 @@ public class Jogo {
 		// Escolhe simbolo
 		opcaoSimbolo = "";
 		
+		// Loop que verifica se o jogador digitou a opcao correta para escolher o simbolo
+		// e solicita novamente se a opcao for invalida
 		while (opcaoSimbolo.equals("")) {
 			Interface.solicitaSimbolo();			
 			opcaoSimbolo = teclado.nextLine();
@@ -59,6 +68,8 @@ public class Jogo {
 		// Iniciar partida?
 		inicio = "";
 		
+		// Loop que verifica se o jogador digitou a opcao correta
+		// Se estiver correto inicia ou nao a partida
 		while (inicio.equals("")) {
 			Interface.msgIniciar();
 			inicio = teclado.nextLine();
@@ -70,6 +81,8 @@ public class Jogo {
 			}			
 		}
 
+		// Loop que inicia as partidas e verifica se o jogador deseja continuar jogando
+		// Loop principal do jogo
 		while (inicio.equals("S")) {
 			String ganhador = "";
 			jogadas = 0;
@@ -81,21 +94,25 @@ public class Jogo {
 			tab.imprimirTabuleiro();
 			System.out.println();
 
+			// Loop que solicita as jogadas
+			// e verifica se houve ganhador ou a partida terminou
 			while (jogadas <= 9 && ganhador.equals("")) {
 				
 				String posicao = "";
 				
 				while (posicao.equals("")) {
+					
 					Interface.solicitarPosicao();
 					posicao = teclado.nextLine();
 					
 					if (!posicao.matches("[1-9]")) {
-						System.out.println("\nPosicao invalida. Digite um numero entre 1 e 9");
+						System.out.println("\nPosicao invalida. Digite um numero entre 1 e 9\n");
 						posicao = "";
-					}
-					
-				}				
-				
+					} else if (!humano.posicaoEhLivre(Integer.valueOf(posicao) - 1)) {
+						System.out.println("\nPosicao nao esta livre. Digite outro numero");
+						posicao = "";
+					}					
+				}
 
 				if (ganhador.equals("")) {
 					humano.jogar(Integer.valueOf(posicao));
@@ -118,6 +135,7 @@ public class Jogo {
 
 			partidas++;
 
+			// Verifica quem ganhou ou se houve empate
 			if (ganhador.equals("")) {
 				int empate = humano.getEmpates();
 				humano.setEmpates(empate + 1);
@@ -140,8 +158,11 @@ public class Jogo {
 
 		tab.setPartidas(partidas);
 
-		if (inicio == "N") {
-			float aproveitamento = ((float) humano.getVitorias() / (float) tab.getPartidas()) * 100;
+		// Se o jogador encerrar o jogo exibe as estatisticas
+		if (inicio.equals("N")) {
+			float aproveitamento;
+			aproveitamento = tab.getPartidas() > 0 ?
+					((float) humano.getVitorias() / (float) tab.getPartidas()) * 100 : 0;
 			System.out.println("\nQue pena...\n");
 			System.out.println("**** Estatisticas ****");
 			System.out.println("Partidas: " + tab.getPartidas());
@@ -157,6 +178,7 @@ public class Jogo {
 	}
 
 	// Setar o modo de jogo
+	// Metodo que vai instanciar um modo de jogo dependendo da escolha do jogador
 	static Computador setModoJogo(String simbolo, Scanner teclado, Tabuleiro tab) {
 		String modoJogo = "";
 		

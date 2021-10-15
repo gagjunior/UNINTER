@@ -1,3 +1,13 @@
+/**
+ * Classe para criar um modo de jogo do tipo 'ModoC'.
+ * Esta e uma classe filha de Computador
+ * Neste modo o computador tenta jogar nas horizontais e verticais
+ * 
+ * @author Gilberto A. G. Junior
+ * @ru 143586
+ * @since 14/10/2021
+ * */
+
 package br.com.gagjunior.jv;
 
 public class ModoC extends Computador {

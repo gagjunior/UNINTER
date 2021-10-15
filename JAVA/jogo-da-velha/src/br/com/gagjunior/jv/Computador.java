@@ -1,6 +1,8 @@
 /**
- * Classe para criar um jogador do tipo computador.
- * Esta é uma classe filha de Jogador
+ * Classe para criar um jogador do tipo 'Computador'.
+ * Esta e uma classe filha de Jogador
+ * Esta e uma classe pai para criar os modos de jogo
+ * 
  * @author Gilberto A. G. Junior
  * @ru 143586
  * @since 14/10/2021
